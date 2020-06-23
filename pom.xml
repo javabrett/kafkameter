@@ -6,7 +6,7 @@
 
     <groupId>kafkameter</groupId>
     <artifactId>kafkameter</artifactId>
-    <version>0.2.0</version>
+    <version>0.2.1-SNAPSHOT</version>
 
     <name>kafkameter</name>
     <description>Kafka plugin for JMeter</description>
@@ -15,9 +15,9 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
-        <jdk.version>1.6</jdk.version>
-        <jmeter.version>2.11</jmeter.version>
-        <kafka.version>0.9.0.1</kafka.version>
+        <jdk.version>8</jdk.version>
+        <jmeter.version>5.3</jmeter.version>
+        <kafka.version>2.5.0</kafka.version>
     </properties>
 
     <dependencies>
@@ -49,13 +49,6 @@
             <artifactId>ApacheJMeter_core</artifactId>
             <version>${jmeter.version}</version>
             <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <!-- XXX 2.5.1 included transitively but not available in Maven -->
-                    <groupId>com.fifesoft</groupId>
-                    <artifactId>rsyntaxtextarea</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <dependency>
@@ -63,13 +56,6 @@
             <artifactId>ApacheJMeter_java</artifactId>
             <version>${jmeter.version}</version>
             <scope>provided</scope>
-            <exclusions>
-                <exclusion>
-                    <!-- XXX 2.5.1 included transitively but not available in Maven -->
-                    <groupId>com.fifesoft</groupId>
-                    <artifactId>rsyntaxtextarea</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <!-- Kafka Dependencies -->
@@ -78,22 +64,6 @@
             <groupId>org.apache.kafka</groupId>
             <artifactId>kafka-clients</artifactId>
             <version>${kafka.version}</version>
-            <exclusions>
-                <!-- XXX Transitively includes log4j 1.2.15 which has bad metadata
-                     http://stackoverflow.com/a/9047963 -->
-                <exclusion>
-                    <groupId>com.sun.jmx</groupId>
-                    <artifactId>jmxri</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>com.sun.jdmk</groupId>
-                    <artifactId>jmxtools</artifactId>
-                </exclusion>
-                <exclusion>
-                    <groupId>javax.jms</groupId>
-                    <artifactId>jms</artifactId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
     </dependencies>
